@@ -8,5 +8,21 @@ namespace assignment1
 {
     class WineItemCollection
     {
+        //public CSVProcessor[] wineListArray = new CSVProcessor[7500];
+
+        
+
+        //public CSVProcessor[] WineArray
+        //{
+        //    get
+        //    {
+        //        return wineListArray;
+        //    }
+
+        //    set
+        //    {
+        //        wineListArray = value;
+        //    }
+        //}
     }
 }
