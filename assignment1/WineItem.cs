@@ -8,11 +8,11 @@ namespace assignment1
 {
     class WineItem
     {
-        public int wineID;
-        public string wineName;
-        public string packString;
+        public static string wineID;
+        public static string wineName;
+        public static string packString;
 
-        public int WineID
+        public static string WineID
         {
             get
             {
@@ -25,7 +25,7 @@ namespace assignment1
             }
         }
 
-        public string WineName
+        public static string WineName
         {
             get
             {
@@ -38,7 +38,7 @@ namespace assignment1
             }
         }
 
-        public string PackString
+        public static string PackString
         {
             get
             {
@@ -53,14 +53,15 @@ namespace assignment1
 
         public override string ToString()
         {
-            return ;
+            return wineID + " " + wineName + " " + packString;
         }
 
-        public WineItem(int id, string discription, string pack)
+        public WineItem(string _wineID, string _wineName, string _packString)
         {
-            wineID = id;
-            wineName = discription;
-            packString = pack;
+            wineID = _wineID;
+            wineName = _wineName;
+            packString = _packString;
+
         }
 
         public WineItem()
@@ -69,3 +70,4 @@ namespace assignment1
         }
     }
 }
+ 

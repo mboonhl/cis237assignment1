@@ -10,7 +10,7 @@ namespace assignment1
     class CSVProcessor
     {
         
-        public static bool ImortCsv(string pathToCsvFile, CSVProcessor[] wineListArray)
+        public static bool  ImortCsv(string pathToCsvFile, WineItemCollection[] WineArray)
         {
             //Declare variable for stream Reader. Not going to instantiate yet
             StreamReader streamReader = null;
@@ -24,8 +24,8 @@ namespace assignment1
                 //Instantiate the stream reader
                 streamReader = new StreamReader(pathToCsvFile);
 
-                //Setup counter that we are not using yet
-                int counter = 0;
+                
+                int counter = 1;
 
                 //while there is a line to read, processes it and input it to the 
                 while ((line = streamReader.ReadLine()) != null)
@@ -33,7 +33,7 @@ namespace assignment1
                     //Calls the processLine method and send over the read in line
                     //the  employee array is passed by reference
                     //counter counts
-                    ProcessLine(line, wineListArray, counter++);
+                    ProcessLine(line, WineArray, counter++);
                 }
                 return true;
             }
@@ -58,20 +58,20 @@ namespace assignment1
             }
         }
 
-        private static void ProcessLine(string line, CSVProcessor[] wineListArray, int index)
+        private static void ProcessLine(string line, WineItemCollection[] WineArray, int index)
         {
             //splits items by commas
             string[] parts = line.Split(',');
 
         
             //Assign parts of array to variables
-            int idNumber = int.Parse(parts[0]);
+            string idNumber = parts[0];
             string discription = parts[1];
             string pack = parts[2];
 
             //Use the variables to instantiate a new Employee and assign it to the spot in the employees array by 
             //the index that was passed in
-            wineListArray[index] = new CSVProcessor();
+           WineArray[index] = new WineItemCollection(idNumber, discription, pack);
 
 
         }
