@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Morgan Boon
+//CIS237
+//9/22/2016
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +14,7 @@ namespace assignment1
     class CSVProcessor
     {
         
+        //Reads the CSV file sends each line to the ProcessLine method while the line contains data
         public static bool  ImortCsv(string pathToCsvFile, WineItem[] WineArray)
         {
             //Declare variable for stream Reader. Not going to instantiate yet
@@ -26,15 +31,15 @@ namespace assignment1
 
                 
                 int counter = 0;
+                 
 
                 //while there is a line to read, processes it and input it to the 
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     //Calls the processLine method and send over the read in line
-                    //the  employee array is passed by reference
-                    //counter counts
+                    
                     ProcessLine(line, WineArray, counter++);
-                    WineItemCollection wineItem = new WineItemCollection(counter);
+                    
                 }
                 return true;
             }
@@ -48,7 +53,7 @@ namespace assignment1
 
                 return false;
             }
-            //Runs if passes or fails
+            
             finally
             {
 
@@ -59,24 +64,25 @@ namespace assignment1
             }
         }
 
+        //Splits each line by commas then creates a new instance of the array at the index 
         private static void ProcessLine(string line, WineItem[] WineArray, int index)
         {
-            //splits items by commas
+            
             string[] parts = line.Split(',');
 
         
-            //Assign parts of array to variables
+           
             string idNumber = parts[0];
             string discription = parts[1];
             string pack = parts[2];
 
             
-            //Use the variables to instantiate a new Employee and assign it to the spot in the employees array by 
-            //the index that was passed in
+            
            WineArray[index] = new WineItem(idNumber, discription, pack);
 
 
         }
+
 
         }
     }

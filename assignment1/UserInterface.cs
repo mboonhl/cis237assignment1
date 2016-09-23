@@ -1,9 +1,14 @@
-﻿using System;
+﻿//Morgan Boon
+//CIS237
+//9/22/2016
+
+using System;
 
 namespace assignment1
 {
     internal static class UserInterface
     {
+        //Promts user to input choice and sends over int to CSV processor to do what is chosen
         public static int GetUserInputCsv()
         {
             PrintCsvMenu();
@@ -22,10 +27,10 @@ namespace assignment1
             return Int32.Parse(input);
         }
 
+        //Gets user input and sends data to WineItemCollecton class to be processed
         public static int GetUserInput()
         {
-            //Call printMenu method and quantify it using the name of the class and not this. 
-            //It does the same thing as this but this refers to and instance and static classes cannot have instances 
+             
             PrintMenu();
 
             //Get input form the console
@@ -41,15 +46,17 @@ namespace assignment1
                 PrintMenu();
                 input = Console.ReadLine();
             }
-            //when the input is valid we can then parse the input
+            
             return int.Parse(input);
         }
 
+        //Prints all output from the array
         public static void PrintAllOutput(string allOutput)
         {
             Console.WriteLine(allOutput);
         }
 
+        //Prints CSV menu
         private static void PrintCsvMenu()
         {
             Console.WriteLine("What would you like to do?");
@@ -57,6 +64,7 @@ namespace assignment1
             Console.WriteLine("2. Exit Program");
         }
 
+        //Prints menu to add or print the array
         private static void PrintMenu()
         {
             Console.WriteLine("What would you like to do?");

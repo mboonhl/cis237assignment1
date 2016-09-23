@@ -1,4 +1,9 @@
-﻿using System;
+﻿//Morgan Boon
+//CIS237
+//9/22/2016
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +19,7 @@ namespace assignment1
         public int arrayIndex;
         WineItem[] WineArray = new WineItem[7500];
 
-
+        //Recieves user input and sends over the array and file location
         public bool ImportArray(int input)
         { 
             
@@ -32,19 +37,20 @@ namespace assignment1
             return true;
         }
 
+        //Loop for choices to add item to the array or print the array
         public void LoopForArray(int choice)
         {
             
-            //While the input is not 2 it continues in the loop to see what they want to do
+            
             while (choice != 3)
             {
-                //If one is chosen then it will go to the for each loop
+                //If one is chosen then it will go to the foreach loop
                 if (choice == 1)
                 {
-                    //String a made to concatenate the list in
+                    
                     string allOutput = "";
 
-                    //loops through the employees to concatenate them.
+                    //loops through the WineArray to concatenate them.
                     foreach (WineItem wine in WineArray)
                     {
                         if (wine != null)
@@ -55,9 +61,11 @@ namespace assignment1
                     //Once the loop is done the UI class will print the results
                     UserInterface.PrintAllOutput(allOutput);
                 }
+
+                //If two is chosen then it calls the add item method
                 if (choice == 2)
                 {
-                    addItem();
+                    AddItem();
                 }
                 //Gets the next choice from the user
                 choice = UserInterface.GetUserInput();
@@ -65,19 +73,12 @@ namespace assignment1
             
         }
 
-        public WineItemCollection(int index)
+      
+        //Takes user input and adds item to the array
+        public void AddItem()
         {
-            arrayIndex = index + 1;
-        }
-
-        public WineItemCollection()
-        {
-            
-        }
-
-        public void addItem()
-        {
-            Console.WriteLine(arrayIndex);
+            ArrayCount();
+            arrayIndex++;
             Console.WriteLine("Input ID");
             wineid = Console.ReadLine();
             Console.WriteLine("Input description");
@@ -87,6 +88,18 @@ namespace assignment1
             
 
             WineArray[arrayIndex] = new WineItem(wineid, disc, pack);
+        }
+
+        //Used to count the current number of items in the array
+        private void ArrayCount()
+        {
+            foreach (WineItem numb in WineArray)
+            {
+                if (numb != null)
+                {
+                    arrayIndex++;
+                }
+            }
         }
 
       
