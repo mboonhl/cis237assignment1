@@ -11,10 +11,11 @@ namespace assignment1
         public string wineid;
         public string disc;
         public string pack;
-        WineItemCollection[] WineArray = new WineItemCollection[7500];
+        public int arrayIndex;
+        WineItem[] WineArray = new WineItem[7500];
 
 
-        public void ImportArray(int input)
+        public bool ImportArray(int input)
         { 
             
 
@@ -24,11 +25,11 @@ namespace assignment1
                 if (input == 1)
                 {
 
-                     CSVProcessor.ImortCsv("WineList.csv", WineArray); 
-
+                     CSVProcessor.ImortCsv("../../../datafiles/WineList.csv", WineArray);
+                    return true;
                 }
             }
-            
+            return true;
         }
 
         public void LoopForArray(int choice)
@@ -44,7 +45,7 @@ namespace assignment1
                     string allOutput = "";
 
                     //loops through the employees to concatenate them.
-                    foreach (WineItemCollection wine in WineArray)
+                    foreach (WineItem wine in WineArray)
                     {
                         if (wine != null)
                         {
@@ -54,28 +55,40 @@ namespace assignment1
                     //Once the loop is done the UI class will print the results
                     UserInterface.PrintAllOutput(allOutput);
                 }
+                if (choice == 2)
+                {
+                    addItem();
+                }
                 //Gets the next choice from the user
                 choice = UserInterface.GetUserInput();
             }
             
         }
 
-        
-        public void addItem(string ID, string Name, string Pack)
+        public WineItemCollection(int index)
         {
-            
-        }
-
-        public WineItemCollection(string _wineID, string _wineName, string _packString)
-        {
-            wineid = _wineID;
-            disc = _wineName;
-            pack = _packString;
+            arrayIndex = index + 1;
         }
 
         public WineItemCollection()
         {
             
         }
+
+        public void addItem()
+        {
+            Console.WriteLine(arrayIndex);
+            Console.WriteLine("Input ID");
+            wineid = Console.ReadLine();
+            Console.WriteLine("Input description");
+            disc = Console.ReadLine();
+            Console.WriteLine("Input pack");
+            pack = Console.ReadLine();
+            
+
+            WineArray[arrayIndex] = new WineItem(wineid, disc, pack);
+        }
+
+      
     }
 }

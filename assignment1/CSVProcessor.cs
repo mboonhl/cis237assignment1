@@ -10,7 +10,7 @@ namespace assignment1
     class CSVProcessor
     {
         
-        public static bool  ImortCsv(string pathToCsvFile, WineItemCollection[] WineArray)
+        public static bool  ImortCsv(string pathToCsvFile, WineItem[] WineArray)
         {
             //Declare variable for stream Reader. Not going to instantiate yet
             StreamReader streamReader = null;
@@ -25,7 +25,7 @@ namespace assignment1
                 streamReader = new StreamReader(pathToCsvFile);
 
                 
-                int counter = 1;
+                int counter = 0;
 
                 //while there is a line to read, processes it and input it to the 
                 while ((line = streamReader.ReadLine()) != null)
@@ -34,6 +34,7 @@ namespace assignment1
                     //the  employee array is passed by reference
                     //counter counts
                     ProcessLine(line, WineArray, counter++);
+                    WineItemCollection wineItem = new WineItemCollection(counter);
                 }
                 return true;
             }
@@ -58,7 +59,7 @@ namespace assignment1
             }
         }
 
-        private static void ProcessLine(string line, WineItemCollection[] WineArray, int index)
+        private static void ProcessLine(string line, WineItem[] WineArray, int index)
         {
             //splits items by commas
             string[] parts = line.Split(',');
@@ -69,9 +70,10 @@ namespace assignment1
             string discription = parts[1];
             string pack = parts[2];
 
+            
             //Use the variables to instantiate a new Employee and assign it to the spot in the employees array by 
             //the index that was passed in
-           WineArray[index] = new WineItemCollection(idNumber, discription, pack);
+           WineArray[index] = new WineItem(idNumber, discription, pack);
 
 
         }

@@ -17,7 +17,7 @@ namespace assignment1
             int input = UserInterface.GetUserInputCsv();
             thisWineItemCollection.ImportArray(input);
 
-            int choice = UserInterface.GetUserInputCsv();
+            int choice = UserInterface.GetUserInput();
             thisWineItemCollection.LoopForArray(choice);
 
 

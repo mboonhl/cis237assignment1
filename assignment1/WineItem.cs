@@ -8,11 +8,11 @@ namespace assignment1
 {
     class WineItem
     {
-        public static string wineID;
-        public static string wineName;
-        public static string packString;
+        public string wineID;
+        public string wineName;
+        public string packString;
 
-        public static string WineID
+        public string WineID
         {
             get
             {
@@ -25,7 +25,7 @@ namespace assignment1
             }
         }
 
-        public static string WineName
+        public string WineName
         {
             get
             {
@@ -38,7 +38,7 @@ namespace assignment1
             }
         }
 
-        public static string PackString
+        public string PackString
         {
             get
             {
