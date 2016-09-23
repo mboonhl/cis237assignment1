@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,11 +22,11 @@ namespace assignment1
 
         //Recieves user input and sends over the array and file location
         public bool ImportArray(int input)
-        { 
-            
-
-            while (input != 2)
+        {
+            if (input == 2)
             {
+                Environment.Exit(0);
+            }
                 //If one is chosen then it will go to the for each loop
                 if (input == 1)
                 {
@@ -33,7 +34,7 @@ namespace assignment1
                      CSVProcessor.ImortCsv("../../../datafiles/WineList.csv", WineArray);
                     return true;
                 }
-            }
+            
             return true;
         }
 
